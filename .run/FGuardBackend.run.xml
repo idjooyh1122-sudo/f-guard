@@ -1,0 +1,8 @@
+<component name="ProjectRunConfigurationManager">
+  <configuration default="false" name="F-Guard Backend" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+    <module name="f-guard-backend" />
+    <option name="SPRING_BOOT_MAIN_CLASS" value="com.fguard.FGuardApplication" />
+    <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/backend" />
+    <method v="2"><option name="Make" enabled="true" /></method>
+  </configuration>
+</component>

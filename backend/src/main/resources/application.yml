@@ -1,0 +1,66 @@
+server:
+  port: ${SERVER_PORT:8080}
+
+spring:
+  application:
+    name: f-guard
+  config:
+    # 프로젝트 루트(.env) 또는 backend/.env 의 값을 읽는다 (없으면 무시)
+    import: optional:file:../.env[.properties],optional:file:.env[.properties]
+  datasource:
+    url: ${DB_URL:jdbc:postgresql://localhost:5432/fguard}
+    username: ${DB_USERNAME:fguard}
+    password: ${DB_PASSWORD:fguard}
+  jpa:
+    open-in-view: false
+    hibernate:
+      ddl-auto: validate
+    properties:
+      hibernate:
+        jdbc.time_zone: Asia/Seoul
+  flyway:
+    enabled: true
+  servlet:
+    multipart:
+      max-file-size: 10MB
+      max-request-size: 11MB
+  jackson:
+    time-zone: Asia/Seoul
+    serialization:
+      write-dates-as-timestamps: false
+
+fguard:
+  timezone: Asia/Seoul
+  frontend-url: ${FRONTEND_URL:http://localhost:5173}
+  upload:
+    max-bytes: 10485760
+  openai:
+    # API 키가 비어 있으면 자동으로 MOCK 모드 (화면에 MOCK 표시)
+    api-key: ${OPENAI_API_KEY:}
+    base-url: ${OPENAI_BASE_URL:https://api.openai.com}
+    # 모델명은 OpenAI 공식 모델 문서에서 확인 후 .env 로 지정한다.
+    vision-model: ${OPENAI_VISION_MODEL:}
+    text-model: ${OPENAI_TEXT_MODEL:}
+    timeout-seconds: ${OPENAI_TIMEOUT_SECONDS:90}
+  weather:
+    # 공공데이터포털 '기상청_단기예보 조회서비스' 일반 인증키(Decoding). 비어 있으면 MOCK.
+    service-key: ${KMA_SERVICE_KEY:}
+    base-url: ${KMA_BASE_URL:https://apis.data.go.kr/1360000/VilageFcstInfoService_2.0}
+  travel:
+    # 카카오모빌리티 길찾기 REST 키 (자동차 경로). 비어 있으면 설정의 기본 이동시간 사용.
+    kakao-rest-key: ${KAKAO_MOBILITY_REST_KEY:}
+    kakao-base-url: ${KAKAO_MOBILITY_BASE_URL:https://apis-navi.kakaomobility.com}
+  google:
+    client-id: ${GOOGLE_CLIENT_ID:}
+    client-secret: ${GOOGLE_CLIENT_SECRET:}
+    redirect-uri: ${GOOGLE_REDIRECT_URI:http://localhost:8080/api/calendar/google/callback}
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health
+
+logging:
+  level:
+    root: INFO

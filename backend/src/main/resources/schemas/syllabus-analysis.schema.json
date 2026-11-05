@@ -1,0 +1,242 @@
+{
+  "type": "object",
+  "properties": {
+    "courseName": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "professor": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "totalSessions": {
+      "type": [
+        "integer",
+        "null"
+      ]
+    },
+    "weights": {
+      "type": "object",
+      "properties": {
+        "attendance": {
+          "type": [
+            "number",
+            "null"
+          ]
+        },
+        "assignment": {
+          "type": [
+            "number",
+            "null"
+          ]
+        },
+        "midterm": {
+          "type": [
+            "number",
+            "null"
+          ]
+        },
+        "final": {
+          "type": [
+            "number",
+            "null"
+          ]
+        },
+        "quiz": {
+          "type": [
+            "number",
+            "null"
+          ]
+        },
+        "other": {
+          "type": [
+            "number",
+            "null"
+          ]
+        },
+        "otherLabel": {
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      },
+      "required": [
+        "attendance",
+        "assignment",
+        "midterm",
+        "final",
+        "quiz",
+        "other",
+        "otherLabel"
+      ],
+      "additionalProperties": false
+    },
+    "attendanceRules": {
+      "type": "object",
+      "properties": {
+        "absenceFailThreshold": {
+          "type": [
+            "integer",
+            "null"
+          ]
+        },
+        "latesPerAbsence": {
+          "type": [
+            "integer",
+            "null"
+          ]
+        },
+        "absencePenalty": {
+          "type": [
+            "number",
+            "null"
+          ]
+        },
+        "latePenalty": {
+          "type": [
+            "number",
+            "null"
+          ]
+        },
+        "description": {
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      },
+      "required": [
+        "absenceFailThreshold",
+        "latesPerAbsence",
+        "absencePenalty",
+        "latePenalty",
+        "description"
+      ],
+      "additionalProperties": false
+    },
+    "assignmentRules": {
+      "type": "object",
+      "properties": {
+        "missingAssignmentFailCount": {
+          "type": [
+            "integer",
+            "null"
+          ]
+        },
+        "latePolicy": {
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      },
+      "required": [
+        "missingAssignmentFailCount",
+        "latePolicy"
+      ],
+      "additionalProperties": false
+    },
+    "failCriteria": {
+      "type": "object",
+      "properties": {
+        "failCutoff": {
+          "type": [
+            "number",
+            "null"
+          ]
+        },
+        "description": {
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      },
+      "required": [
+        "failCutoff",
+        "description"
+      ],
+      "additionalProperties": false
+    },
+    "assignments": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "title": {
+            "type": "string"
+          },
+          "dueDate": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "dueTime": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "evidence": {
+            "type": [
+              "string",
+              "null"
+            ]
+          }
+        },
+        "required": [
+          "title",
+          "dueDate",
+          "dueTime",
+          "evidence"
+        ],
+        "additionalProperties": false
+      }
+    },
+    "uncertainFields": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "evidence": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "field": {
+            "type": "string"
+          },
+          "quote": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "field",
+          "quote"
+        ],
+        "additionalProperties": false
+      }
+    }
+  },
+  "required": [
+    "courseName",
+    "professor",
+    "totalSessions",
+    "weights",
+    "attendanceRules",
+    "assignmentRules",
+    "failCriteria",
+    "assignments",
+    "uncertainFields",
+    "evidence"
+  ],
+  "additionalProperties": false,
+  "$schema": "https://json-schema.org/draft/2020-12/schema"
+}
